@@ -1,0 +1,99 @@
+{
+  "__version": "1.0",
+  "__comments": "Settings specific to a distributed switch for customization.",
+  "vcName": "vcenter.domain.com",
+  "vDatacenter": "dc1",
+  "vdsFolder": "networkfolder1",
+  "vdsContactName": "",
+  "vdsLinkDiscoveryProto": "CDP",
+  "vdsLinkDiscoveryProtoOp": "Listen",
+  "vdsName": "DSwitch.iscsi",
+  "vdsMtu": "9000",
+  "vdsNumUplinks": "2",
+  "vdsVersion": "6.0.0",
+  "vdsUplinkNames": [
+	"sanUplink1",
+	"sanUplink2"
+  ],
+  "vdsNIOCEnable": true,
+  "vdsNIOCCustomRPs": [
+      {
+        "name": "In Guest iSCSI",
+        "description": "Guest Storage Traffic"
+      }
+    ],
+	"vdsNIOCSystemRPs": [
+		{
+		  "Key": "management",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "faultTolerance",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "vmotion",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "virtualMachine",
+		  "Level": "high"
+		},
+		{
+		  "Key": "iSCSI",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "nfs",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "hbr",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "vsan",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "vdp",
+		  "Level": "normal"
+		}
+	],
+	"vdsPortgroups": [
+		{
+		  "name": "vmk.vmotion",
+		  "standbyuplinks": "sanUplink2"
+		},
+		{
+		  "name": "vmk.nfs",
+		  "vlan": 108,
+		  "activeuplinks": "sanUplink2",
+		  "standbyuplinks": "sanUplink1"
+		},
+		{
+		  "name": "vmk.iscsi.101",
+		  "vlan": 101,
+		  "activeuplinks": "sanUplink1",
+		  "unuseduplinks": "sanUplink2"
+		},
+		{
+		  "name": "vmk.iscsi.102",
+		  "vlan": 102,
+		  "activeuplinks": "sanUplink2",
+		  "unuseduplinks": "sanUplink1"
+		},
+		{
+		  "name": "guest.iscsi.101",
+		  "vlan": 101,
+		  "activeuplinks": "sanUplink1",
+		  "unuseduplinks": "sanUplink2"
+		},
+		{
+		  "name": "guest.iscsi.102",
+		  "vlan": 102,
+		  "activeuplinks": "sanUplink2",
+		  "unuseduplinks": "sanUplink1"
+		}
+	]
+}

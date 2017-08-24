@@ -1,0 +1,79 @@
+{
+  "__version": "1.0",
+  "__comments": "Settings specific to a distributed switch for customization.",
+  "vcName": "vcenter.domain.com",
+  "vDatacenter": "dc1",
+  "vdsFolder": "networkfolder1",
+  "vdsContactName": "",
+  "vdsLinkDiscoveryProto": "CDP",
+  "vdsLinkDiscoveryProtoOp": "Listen",
+  "vdsName": "DSwitch.data",
+  "vdsMtu": "1500",
+  "vdsNumUplinks": "2",
+  "vdsVersion": "6.0.0",
+  "vdsUplinkNames": [
+	"dataUplink1",
+	"dataUplink2"
+  ],
+  "vdsNIOCEnable": true,
+  "vdsNIOCSystemRPs": [
+		{
+		  "Key": "management",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "faultTolerance",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "vmotion",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "virtualMachine",
+		  "Level": "high"
+		},
+		{
+		  "Key": "iSCSI",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "nfs",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "hbr",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "vsan",
+		  "Level": "normal"
+		},
+		{
+		  "Key": "vdp",
+		  "Level": "normal"
+		}
+	],
+	"vdsPortgroups": [
+		{
+		  "name": "vmk.svcconsole",
+		  "standbyuplinks": "dataUplink2"
+		},
+		{
+		  "name": "guest.network.ephemeral",
+		  "portbinding": "Ephemeral",
+		  "failback": false,
+		  "lbpolicy": "LoadBalanceLoadBased"
+		},
+		{
+		  "name": "guest.trunk.all",
+		  "vlantrunk": "0-4094",
+		  "activeuplinks": "dataUplink2",
+		  "standbyuplinks": "dataUplink1"
+		},
+		{
+		  "name": "guest.network-100",
+		  "vlan": "100"
+		}
+	]
+}
